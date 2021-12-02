@@ -1,6 +1,6 @@
 # EventEmitter
 
-Simple lightweight inheritable event emitter with minimal footprint
+Simple lightweight inheritable event emitter with minimal footprint and zero dependencies
 
 # Example
 ```JAVASCRIPT

@@ -12,7 +12,8 @@
   },
   "keywords": [
     "javascript",
-    "event-emitter"
+    "event-emitter",
+    "dependency-free"
   ],
   "author": "neomasterr",
   "license": "ISC",
