@@ -1,0 +1,23 @@
+{
+  "name": "event-emitter",
+  "version": "1.0.0",
+  "description": "Liteweight EventEmitter JavaScript Class",
+  "main": "event-emitter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neomasterr/event-emitter.git"
+  },
+  "keywords": [
+    "javascript",
+    "event-emitter"
+  ],
+  "author": "neomasterr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neomasterr/event-emitter/issues"
+  },
+  "homepage": "https://github.com/neomasterr/event-emitter#readme"
+}
