@@ -1,6 +1,8 @@
-Simple lightweight inheritable event emitter
+# EventEmitter
 
-Example
+Simple lightweight inheritable event emitter with minimal footprint
+
+# Example
 ```JAVASCRIPT
 import EventEmitter from 'event-emitter';
 
@@ -13,7 +15,7 @@ ev.on('init', (foo, bar) => {
 ev.emit('init', 'foo', 'bar');
 ```
 
-Inheritance (mixin)
+# Inheritance (mixin)
 ```JAVASCRIPT
 import EventEmitter from 'event-emitter';
 
