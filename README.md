@@ -17,6 +17,9 @@ ev.emit('init', 'foo', 'bar');
 
 # Inheritance (mixin)
 ```JAVASCRIPT
+///////////////////////////
+// my-super-component.js //
+///////////////////////////
 import EventEmitter from 'event-emitter';
 
 function MySuperComponent(options = {on: {}}) {
@@ -38,6 +41,11 @@ Object.defineProperty(MySuperComponent.prototype, 'constructor', {
     writable: true,
     enumerable: false,
 });
+
+/////////////
+// page.js //
+/////////////
+import MySuperComponent from './my-super-component';
 
 const component = new MySuperComponent({
     on: {
