@@ -1,6 +1,6 @@
 {
   "name": "@neomasterr/event-emitter",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Liteweight EventEmitter JavaScript Class",
   "main": "event-emitter.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "dependency-free"
   ],
   "author": "neomasterr",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/neomasterr/event-emitter/issues"
   },
