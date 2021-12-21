@@ -1,3 +1,5 @@
+[![npm](https://img.shields.io/npm/v/@neomasterr/event-emitter.svg?style=flat-square)](https://www.npmjs.org/@neomasterr/event-emitter)
+
 # EventEmitter
 
 Simple lightweight inheritable event emitter with minimal footprint and zero dependencies
