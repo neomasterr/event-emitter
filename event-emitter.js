@@ -11,22 +11,30 @@ function EventEmitter(events = {}) {
      * @param {String} event   Имя события
      * @param {Object} options Параметры
      */
-    function _listen(event, options) {
-        // параметры по умолчанию
-        const data = Object.assign({
-            once: false,
-            callback: function() {},
-        }, options);
-
-        if (typeof data.callback != 'function') {
-            return;
+    const _listen = function(event, options) {
+        const callbacks = [];
+        if (typeof options.callback == 'function') {
+            callbacks.push(options.callback);
+        } else if (typeof options.callback == 'object' && Array.isArray(options.callback)) {
+            options.callback.filter(callback => typeof callback == 'function').forEach(callback => {
+                callbacks.push(callback);
+            });
         }
 
         if (!_events[event]) {
             _events[event] = [];
         }
 
-        return _events[event].push(data);
+        callbacks.forEach(callback => {
+            const data = {
+                once: options.once || false,
+                callback,
+            }
+
+            _events[event].push(data);
+        });
+
+        return _events[event].length;
     }
 
     if (typeof events == 'object' && events !== null) {
