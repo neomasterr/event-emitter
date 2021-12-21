@@ -6,7 +6,7 @@ Simple lightweight inheritable event emitter with minimal footprint and zero dep
 
 # Example
 ```JAVASCRIPT
-import EventEmitter from 'event-emitter';
+import EventEmitter from '@neomasterr/event-emitter';
 
 const ev = new EventEmitter();
 
@@ -22,7 +22,7 @@ ev.emit('init', 'foo', 'bar');
 ///////////////////////////
 // my-super-component.js //
 ///////////////////////////
-import EventEmitter from 'event-emitter';
+import EventEmitter from '@neomasterr/event-emitter';
 
 function MySuperComponent(options = {on: {}}) {
     EventEmitter.call(this, options.on);
