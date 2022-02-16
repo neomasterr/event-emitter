@@ -22,12 +22,14 @@ ev.emit('init', 'foo', 'bar');
 ///////////////////////////
 // my-super-component.js //
 ///////////////////////////
-import EventEmitter from '@neomasterr/event-emitter';
+import EventEmitterMixin from '@neomasterr/event-emitter/mixin';
 
 function MySuperComponent(options = {on: {}}) {
-    EventEmitter.call(this, options.on);
+    EventEmitterMixin.call(this, options.on);
 
-    this.emit('init');
+    // typeof this.emitter == 'EventEmitter'
+
+    this.emit('init'); // or this.emitter.emit('init');
 
     setTimeout(() => {
         this.emit('init:after');
@@ -35,7 +37,7 @@ function MySuperComponent(options = {on: {}}) {
 }
 
 // mixin
-Object.assign(MySuperComponent.prototype, EventEmitter.prototype);
+Object.assign(MySuperComponent.prototype, EventEmitterMixin.prototype);
 
 // prototype chaining
 Object.defineProperty(MySuperComponent.prototype, 'constructor', {
