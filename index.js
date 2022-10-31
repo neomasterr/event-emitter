@@ -3,12 +3,13 @@
 *
 * https://github.com/neomasterr/event-emitter
 */
-function EventEmitter(events = {}) {
+function EventEmitter(events = {}, context = undefined) {
     this.events = {};
+    this.context = context;
 
     if (typeof events == 'object' && events !== null) {
         for (let event in events) {
-            this._listen(event, {callback: events[event]});
+            this.on(event, events[event]);
         }
     }
 }
@@ -18,7 +19,7 @@ function EventEmitter(events = {}) {
  * @param {String} event   Имя события
  * @param {Object} options Параметры
  */
-EventEmitter.prototype._listen = function(event, options) {
+EventEmitter.prototype.__listen = function(event, options) {
     const callbacks = [];
     if (typeof options.callback == 'function') {
         callbacks.push(options.callback);
@@ -50,7 +51,7 @@ EventEmitter.prototype._listen = function(event, options) {
  * @param {Function} callback Вызываемый метод
  */
 EventEmitter.prototype.on = function(event, callback) {
-    return this._listen(event, {
+    return this.__listen(event, {
         callback,
     });
 }
@@ -61,7 +62,7 @@ EventEmitter.prototype.on = function(event, callback) {
  * @param {Function} callback Вызываемый метод
  */
 EventEmitter.prototype.once = function(event, callback) {
-    return this._listen(event, {
+    return this.__listen(event, {
         once: true,
         callback,
     });
@@ -85,7 +86,7 @@ EventEmitter.prototype.emit = function(event) {
     // вызов
     const interrupted = this.events[event].some(item => {
         // возврат true означает прерывание вызова событий (handled)
-        return item.callback.apply(this, args) === true;
+        return item.callback.apply(this.context || this, args) === true;
     });
 
     // забываем одноразовые события

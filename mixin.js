@@ -1,7 +1,7 @@
 import EventEmitter from '@neomasterr/event-emitter';
 
 function EventEmitterMixin(events) {
-    this.emitter = new EventEmitter(events);
+    this.emitter = new EventEmitter(events, this);
 }
 
 EventEmitterMixin.prototype.on = function() {
