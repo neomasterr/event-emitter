@@ -3,7 +3,7 @@
 *
 * https://github.com/neomasterr/event-emitter
 */
-function EventEmitter(events = {}, context = undefined) {
+function EventEmitter(events = {}, context = null) {
     this.events = {};
     this.context = context;
 
@@ -86,7 +86,7 @@ EventEmitter.prototype.emit = function(event) {
     // вызов
     const interrupted = this.events[event].some(item => {
         // возврат true означает прерывание вызова событий (handled)
-        return item.callback.apply(this.context || this, args) === true;
+        return item.callback.apply(this.context, args) === true;
     });
 
     // забываем одноразовые события
