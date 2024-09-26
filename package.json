@@ -6,6 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "exports": {
+    ".": "./event-emitter.js",
+    "./event-emitter-mixin": "./event-emitter-mixin.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/neomasterr/event-emitter.git"
