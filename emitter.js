@@ -42,6 +42,23 @@ EventEmitter.prototype.on = function(event, callback) {
 }
 
 /**
+ * Отписка от события
+ * @param {String}   event    Имя события
+ * @param {Function} callback Вызываемый метод
+ */
+EventEmitter.prototype.off = function(event, callback) {
+    if (!this.events[event] || !this.events[event].length) {
+        return;
+    }
+
+    if (typeof callback == 'undefined') {
+        this.events[event] = [];
+    } else {
+        this.events[event] = this.events[event].filter(data => data.callback != callback);
+    }
+}
+
+/**
  * Одноразовое событие
  * @param {String}   event    Имя события
  * @param {Function} callback Вызываемый метод
