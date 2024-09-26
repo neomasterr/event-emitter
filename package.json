@@ -2,13 +2,12 @@
   "name": "@neomasterr/event-emitter",
   "version": "1.1.4",
   "description": "Liteweight EventEmitter JavaScript Class",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "exports": {
-    ".": "./event-emitter.js",
-    "./event-emitter-mixin": "./event-emitter-mixin.js"
+    ".": "./mixin.js",
+    "./emitter": "./emitter.js"
   },
   "repository": {
     "type": "git",

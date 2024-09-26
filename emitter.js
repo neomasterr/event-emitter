@@ -3,15 +3,9 @@
 *
 * https://github.com/neomasterr/event-emitter
 */
-function EventEmitter(events = {}, context = null) {
+function EventEmitter(context = null) {
     this.events = {};
     this.context = context;
-
-    if (typeof events == 'object' && events !== null) {
-        for (let event in events) {
-            this.on(event, events[event]);
-        }
-    }
 }
 
 /**
@@ -20,33 +14,24 @@ function EventEmitter(events = {}, context = null) {
  * @param {Object} options Параметры
  */
 EventEmitter.prototype.__listen = function(event, options) {
-    const callbacks = [];
-    if (typeof options.callback == 'function') {
-        callbacks.push(options.callback);
-    } else if (typeof options.callback == 'object' && Array.isArray(options.callback)) {
-        options.callback.filter(callback => typeof callback == 'function').forEach(callback => {
-            callbacks.push(callback);
-        });
+    if (typeof options.callback != 'function') {
+        throw new Error('Callback must be a function');
     }
 
     if (!this.events[event]) {
         this.events[event] = [];
     }
 
-    callbacks.forEach(callback => {
-        const data = {
-            once: options.once || false,
-            callback,
-        }
-
-        this.events[event].push(data);
+    this.events[event].push({
+        once: options.once || false,
+        callback: options.callback,
     });
 
     return this.events[event].length;
 }
 
 /**
- * Подписываемся на событие
+ * Подписка на событие
  * @param {String}   event    Имя события
  * @param {Function} callback Вызываемый метод
  */
