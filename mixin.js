@@ -1,4 +1,4 @@
-import EventEmitter from '@neomasterr/event-emitter';
+import EventEmitter from './emitter.js';
 
 function EventEmitterMixin() {
     this.emitter = new EventEmitter(this);
