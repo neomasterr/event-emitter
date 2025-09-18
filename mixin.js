@@ -1,7 +1,7 @@
 import EventEmitter from './emitter.js';
 
-function EventEmitterMixin() {
-    this.emitter = new EventEmitter(this);
+function EventEmitterMixin(context = null, events = {}) {
+    this.emitter = new EventEmitter(context, events);
 }
 
 EventEmitterMixin.prototype.on = function() {

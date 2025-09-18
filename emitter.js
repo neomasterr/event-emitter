@@ -3,9 +3,21 @@
 *
 * https://github.com/neomasterr/event-emitter
 */
-function EventEmitter(context = null) {
-    this.events = {};
+function EventEmitter(context = null, events = {}) {
     this.context = context;
+    this.events = {};
+
+    if (events && events.on) {
+        for (let event in events.on) {
+            this.on(event, events.on[event]);
+        }
+    }
+
+    if (events && events.once) {
+        for (let event in events.once) {
+            this.once(event, events.once[event]);
+        }
+    }
 }
 
 /**
